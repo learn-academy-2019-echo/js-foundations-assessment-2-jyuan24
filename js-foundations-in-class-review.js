@@ -29,6 +29,18 @@ function divideBy3(input) {
 }
 console.log(divideBy3(array1))
 
+// in class review
+const numbers = [15,0,385,-7]
+function threeChecker(number){
+    if(number%3===0){
+        console.log(`${number} is divisible by 3`)
+    }
+    else{
+        console.log(`${number} is not divisible by 3`)
+    }
+}
+numbers.forEach(threeChecker)
+
 
 
 // 2. Create an object called helloMe. Include your firstName, lastName and TWO OTHER properties of you. Add a method to your object that will return a sentence using the object properties to describe you.
@@ -61,6 +73,16 @@ var helloMe = {
 }
 console.log(helloMe.description())
 
+// in class review
+const helloMe = {
+    firstName: 'Matt',
+    lastName: 'Clark',
+    sign: 'Gemini',
+    height: `5'9"`,
+    describe(){ return ( `${this.firstName} ${this.lastName} is a ${this.sign} and he is ${this.height} feet tall.`)}
+    // OR - describe: function(){ return ( `${this.firstName} ${this.lastName} is a ${this.sign} and he is ${this.height} feet tall.`)}
+}
+
 
 
 // ------------------------------------- Consider the variable:
@@ -83,6 +105,15 @@ everyOtheri = (array) => {
 }
 console.log(everyOtheri(randomNouns))
 
+// in class
+function outputter(array) {
+    const otherArray = array.filter((item, index) => {
+        return index % 2 === 0
+    })
+    otherArray.join(" ")
+}
+console.log(outputter(randomNouns))
+
 
 
 // 3b. Create a function that takes in the variable and returns the array with all the words capitalized. Expected output: ["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew", "Temperature", "Database"]
@@ -99,8 +130,16 @@ capitalize3b = (array) => {
     }
     return array3b
 }
-
 console.log(capitalize3b(randomNouns))
+
+// in class
+function capitalizer(array) {
+    const newArray = array.map((item)=>{
+        return item.charAt(0).toUpperCase() + item.slice(1)
+    })
+    return newArray
+}
+console.log(capitalizer(randomNouns))
 
 
 
@@ -135,6 +174,12 @@ wordLength = (array) => {
 // }
 
 console.log(wordLength(randomNouns))
+
+// in class
+function lengthFinder(array) {
+    return array.map(word) => word.length)
+}
+console.log(lengthFinder(randomNouns))
 
 
 
@@ -171,6 +216,15 @@ console.log(alphabetSoup(testString1))
 console.log(alphabetSoup(testString2))
 console.log(alphabetSoup(testString3))
 
+// in class
+function sorted(string) {
+    const arr = string.split("").sort()
+    return arr.join("")
+}
+[testString1, testString2, testString3].forEach((string) => {
+    console.log(sorted(string))
+})
+
 
 
 // 4b. Write a function that takes in all three variables and returns a string with all the letters in alphabetical order. Expected output: "aaaacddeeegilmnnorsy"
@@ -186,6 +240,14 @@ var combinedAlphabetical = (array) => {
     return newString
 }
 console.log(combinedAlphabetical(arrayTestString))
+
+// in class
+function sorted(...args) {
+    const arr = args.join("").split("").sort()
+    return arr.join("")
+}
+const words = [testString1, testString2, testString3]
+console.log(sorted(testString1, testString2, testString3))
 
 
 
@@ -208,6 +270,15 @@ var combinedString = (array1, array2) => {
     return string
 }
 console.log(combinedString(amounts, animals))
+
+// in class
+function joiner(amounts, animals) {
+    const subStrings = animals.map((animal, index) => {
+        return `${amounts[index]} ${animal}`
+    })
+    return subStrings.join(", ")
+}
+console.log(joiner(amounts, animals))
 
 
 
@@ -233,3 +304,20 @@ var singularFilter = (array1, array2) => {
     return string
 }
 console.log(singularFilter(amounts, animals))
+
+// in class
+function dePluralizer(amount, animal) {
+    if (amount === 1) {
+        return animal.slice(0, animal.length - 1)
+    }
+    else {
+        return animal
+    }
+}
+function joiner(amounts,animals){
+    const subStrings = animals.map((animal, index) => {
+        return `${amounts[index]} ${dePluralizer(animal)}`
+    })
+    return subStrings.join(", ")
+}
+console.log(joiner(amounts, animals))
